@@ -50,7 +50,7 @@
 
         public function querySelect($tableName, $selectData, $sellectWhereKey = null, $selectWhereValue = null, $orderByKey = null, $orderByValue = null){
             if(isset($selectWhereKey, $selectWhereValue)){
-                $prepare = parent::prepare("SELECT {$selectData} FROM {$tableName} WHERE $insertWhere");
+                $prepare = parent::prepare("SELECT {$selectData} FROM {$tableName} WHERE {$insertWhere}");
             }
             elseif(isset($orderByKey, $orderByValue)){
                 $prepare = parent::prepare("SELECT {$selectData} FROM {$tableName} ORDER BY {$orderByKey} {$orderByValue}");
