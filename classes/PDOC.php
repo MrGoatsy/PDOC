@@ -1,6 +1,6 @@
 <?php
     class PDOC extends PDO{
-        private $myselhost;
+        private $mysqlhost;
         private $dbname;
         private $myseluser;
         private $mysqlpass;
@@ -10,8 +10,7 @@
                 parent::__construct("mysql:dbname={$dbname};host={$mysqlhost}", $mysqluser, $mysqlpass);
                 $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }catch(PDOException $e){
-                return $e->getMessage();
-                //die('Something went wrong, please try again.');
+                throw new PDOException($e->getMessage());
             }
         }
 
@@ -23,7 +22,7 @@
                     $executeData
                 );
             }catch(PDOException $e){
-                return $e->getMessage();
+                throw new PDOException($e->getMessage());
             }
         }
 
@@ -35,7 +34,7 @@
                     $executeData
                 );
             }catch(PDOException $e){
-                return $e->getMessage();
+                throw new PDOException($e->getMessage());
             }
         }
 
@@ -45,7 +44,7 @@
             try{
                 $prepare->execute();
             }catch(PDOException $e){
-                return $e->getMessage();
+                throw new PDOException($e->getMessage());
             }
         }
 
@@ -66,7 +65,7 @@
             try{
                 $prepare->execute();
             }catch(PDOException $e){
-                return $e->getMessage();
+                throw new PDOException($e->getMessage());
             }
         }
     }

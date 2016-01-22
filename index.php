@@ -1,7 +1,15 @@
 <?php
     include'init.php';
 
-    $handler = new PDOC('localhost', 'goatbb', 'root', '');
+    try{
+        $handler = new PDOC('localhost', 'goatbb', 'root', '');
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
 
-    echo $handler->queryDelete('messages', 'm_id = 1');
+    try{
+        echo $handler->queryInsert('messages', 'u_id_sender', ':send', [':send' => '393939393']);
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
 ?>
